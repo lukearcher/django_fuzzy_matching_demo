@@ -1,34 +1,38 @@
-<h1>Cloud9 Demo</h1>
-<h2>Fuzzy Matching</h2>
-<p>
-<br>
-The purpose of this page is to demonstrate a simple fuzzy matching alogrithm.
-<br>
-To use this please enter the two names to test in the <b>Name 1</b> and <b>Name 2</b> boxes.
-<br>
-Then click the <b>Fuzzy Matching</b> button.
-<br>
-This will perform simple fuzzy matching and output 3 separate scores:
-<br>
-<ol>
-  <li><u>Fuzzy Score</u> is the overall score (in order)</li>
-  <li><u>Partial Score</u> is done by comparing the shortest name to the others</li>
-  <li><u>Token Score</u> is the score without worrying about the order of the names (just in case we are comparing last and first names in the opposite order)</li>
-</ol>
-<br>
-The scores range beteen 0 and 1, with a higher score indicating a higher confidence in the match.
-<br>
-Have fun!
-<br>
-</p>
-<form action="{% url 'fuzzy' %}">
-  Name 1: <input type="text" name="name1">
-  <br>
-  Name 2: <input type="text" name="name2">
-  <br>
-  <br>
-  <input type="submit" value="Fuzzy Matching" class="btn btn-primary">
-</form>
-{{ message }}
-<br>
-<a href = "{% url 'home' %}" class="btn btn-success">reset</a>
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<div class="container text-left">
+  <img src="{% static 'fuzzy/Logo.jpg' %}" height=20% width=20%>
+  <h1>Cloud9 Demo</h1>
+  <h2>Fuzzy Matching</h2>
+  <p>
+    The purpose of this page is to demonstrate a simple fuzzy matching alogrithm.
+    <br>
+    To use this please enter the two names to test in the <b>Name 1</b> and <b>Name 2</b> boxes.
+    <br>
+    Then click the <b>Fuzzy Matching</b> button.
+    <br>
+    This will perform simple fuzzy matching and output 3 separate scores:
+    <br>
+    <ol>
+      <li><u>Fuzzy Score</u> is the overall score (in order)</li>
+      <li><u>Partial Score</u> is done by comparing the shortest name to the others</li>
+      <li><u>Token Score</u> is the score without worrying about the order of the names (just in case we are comparing last and first names in the opposite order)</li>
+    </ol>
+    The scores range beteen 0 and 1, with a higher score indicating a higher confidence in the match.
+    <br>
+    Have fun!
+    <br>
+    </p>
+    <form action="{% url 'fuzzy' %}">
+      Name 1: <input type="text" name="name1">
+      <br>
+      <br>
+      Name 2: <input type="text" name="name2">
+      <br>
+      <br>
+      <input type="submit" value="Fuzzy Matching" class="btn btn-primary">
+    </form>
+    {{ message|safe }}
+    <br>
+    <a href = "{% url 'home' %}" class="btn btn-success">reset</a>
+</div>
